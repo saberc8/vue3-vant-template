@@ -1,0 +1,1 @@
+import{k as r}from"./index.b523dea4.js";const i={to:[String,Object],url:String,replace:Boolean};function s({to:e,url:o,replace:t,$router:n}){e&&n?n[t?"replace":"push"](e):o&&(t?location.replace(o):location.href=o)}function a(){const e=r().proxy;return()=>s(e)}export{i as r,a as u};
