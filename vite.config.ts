@@ -31,11 +31,11 @@ export default ({ mode }): UserConfigExport => {
       }),
       // setup name 增强
       VueSetupExtend(),
-      eslint({
-        cache: false,
-        include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue'],
-        exclude: ['node_modules'],
-      }),
+      // eslint({
+      //   cache: false,
+      //   include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue'],
+      //   exclude: ['node_modules'],
+      // }),
       // 自动导包
       AutoImport({
         dts: 'src/auto-imports.d.ts', // 可以自定义文件生成的位置，默认是根目录下

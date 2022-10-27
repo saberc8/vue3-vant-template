@@ -18,7 +18,7 @@ const onSubmit = () => {
   <div class="app-page-dashboard">
     <ol class="demo-ol-list">
       <li>
-        <h1>按钮</h1>
+        <h1 class="m-1">按钮</h1>
         <div class="demo-ol-body">
           <van-space size="1rem">
             <van-button type="primary" @click="onSubmit">开始</van-button>

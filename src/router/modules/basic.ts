@@ -28,11 +28,11 @@ export default {
       },
     },
     {
-      path: '/basic/me',
-      name: 'me',
-      component: () => import('@/views/basic/me/index.vue'),
+      path: '/basic/about',
+      name: 'about',
+      component: () => import('@/views/basic/about/index.vue'),
       meta: {
-        title: '我',
+        title: '关于',
         icon: 'icon-dashboard',
       },
     },

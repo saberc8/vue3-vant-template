@@ -19,9 +19,9 @@ const tabbarData: TabbarType[] = reactive([
   },
   {
     icon: 'manager-o',
-    title: '我的',
+    title: '关于',
     to: {
-      name: 'me',
+      name: 'about',
     },
   },
 ])
