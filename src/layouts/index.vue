@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import Header from './Header/index.vue'
-import Tabbar from './Tabbar/index.vue'
-</script>
 <template>
   <div class="app-layout">
     <Header />
@@ -13,7 +9,10 @@ import Tabbar from './Tabbar/index.vue'
     </footer>
   </div>
 </template>
-
+<script setup lang="ts">
+import Header from './Header/index.vue'
+import Tabbar from './Tabbar/index.vue'
+</script>
 <style lang="scss" scoped>
 .app-layout {
   position: absolute;

@@ -5,5 +5,3 @@
 
 **/*.svg
 **/*.sh
-
-.eslinttrc.cjs

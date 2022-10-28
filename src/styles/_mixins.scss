@@ -70,7 +70,8 @@
 }
 
 //文字一行超出显示省略号
-@mixin ellipsis ($substract:0){//`$substract`单位为%
+@mixin ellipsis($substract: 0) {
+  //`$substract`单位为%
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -84,7 +85,7 @@
   }
   &:before,
   &:after {
-    content: "";
+    content: '';
     display: table;
   }
   &:after {
@@ -135,7 +136,7 @@
 }
 
 // 渐变
-@mixin gradient($start-color, $end-color, $orientation:'vertical') {
+@mixin gradient($start-color, $end-color, $orientation: 'vertical') {
   background: $start-color;
   @if $orientation == 'vertical' {
     background: -webkit-linear-gradient(top, $start-color, $end-color);

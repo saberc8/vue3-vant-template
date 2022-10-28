@@ -18,6 +18,7 @@ const { dependencies, devDependencies, name } = pkg
 console.log(dependencies, devDependencies, name)
 const schema = <any>[]
 const devSchema = <any>[]
+
 Object.keys(dependencies).forEach((key) => {
   schema.push({ field: key, label: key })
 })

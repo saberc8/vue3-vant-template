@@ -17,15 +17,3 @@ export const uuid = (prefix = 'app-') => {
   const uuid = s.join('')
   return prefix + uuid
 }
-
-// 下载二维码
-export const downLoadQRcode = (id: string, title = '二维码'): void => {
-  const canvas = document.getElementById(id) as HTMLCanvasElement
-  const url = canvas.toDataURL('image/png') // 通过 toDataURL 返回一个包含图片展示的 data URI
-  const aDom = document.createElement('a')
-  aDom.download = title // 设置下载的文件名
-  aDom.href = url
-  document.body.appendChild(aDom)
-  aDom.click()
-  aDom.remove()
-}
