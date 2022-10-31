@@ -10,9 +10,11 @@ export function useLoading() {
       forbidClick: true,
       message: 'Loading...',
     })
+    console.log(toast)
   }
   const stopLoading = () => {
-    toast && toast.clear()
+    console.log('stop')
+    toast.clear()
   }
 
   onBeforeUnmount(stopLoading)

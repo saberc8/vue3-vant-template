@@ -9,6 +9,8 @@
 </template>
 
 <script setup lang="ts">
+import { NavBar, Icon } from 'vant'
+import { useRouter } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 </script>

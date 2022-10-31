@@ -23,7 +23,7 @@ export default ({ mode }): UserConfigExport => {
     },
     plugins: [
       vue(),
-      // 按需引入插件
+      // // 按需引入插件
       Components({
         resolvers: [VantResolver()],
       }),
