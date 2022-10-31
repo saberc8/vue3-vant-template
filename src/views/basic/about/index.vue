@@ -7,13 +7,16 @@
     <Tag type="primary" v-for="(item, index) in schema" class="m-1">{{ item.label }}</Tag>
     <div>devDependencies</div>
     <Tag type="primary" v-for="(item, index) in devSchema" class="m-1">{{ item.label }}</Tag>
+    <div>
+      {{test}}
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import pkg from '../../../../package.json'
 import { Tag } from 'vant'
-console.log(pkg)
+const test = ref('test')
 const { dependencies, devDependencies, name } = pkg
 console.log(dependencies, devDependencies, name)
 const schema = <any>[]

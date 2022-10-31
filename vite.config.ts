@@ -1,7 +1,6 @@
 import { fileURLToPath, URL } from 'url'
 import { defineConfig, loadEnv, UserConfigExport } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import eslint from 'vite-plugin-eslint'
 import autoprefixer from 'autoprefixer'
 import pxtovw from 'postcss-px-to-viewport'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -13,7 +12,6 @@ import UnoCSS from 'unocss/vite'
 
 // https://vitejs.dev/config/
 export default ({ mode }): UserConfigExport => {
-  // eslint-disable-next-line no-undef
   const root = process.cwd()
   const env = loadEnv(mode, root)
   const { VITE_BASE_URL } = env
@@ -31,11 +29,6 @@ export default ({ mode }): UserConfigExport => {
       }),
       // setup name 增强
       VueSetupExtend(),
-      // eslint({
-      //   cache: false,
-      //   include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue'],
-      //   exclude: ['node_modules'],
-      // }),
       // 自动导包
       AutoImport({
         dts: 'src/auto-imports.d.ts', // 可以自定义文件生成的位置，默认是根目录下
@@ -45,10 +38,6 @@ export default ({ mode }): UserConfigExport => {
           'vue-router',
           'pinia',
         ],
-        // 自动生成'eslintrc-auto-import.json'文件，在'.eslintrc.cjs'的'extends'中引入解决报错
-        eslintrc: {
-          enabled: true,
-        },
       }),
       // 自动导入图片
       ViteImages({

@@ -1,9 +1,0 @@
-src/**/test/**
-postcss.config.js
-/build
-/config
-/src/typings/*
-echarts-dark-theme.*
-/dist
-/public
-eslintrc.cjs
