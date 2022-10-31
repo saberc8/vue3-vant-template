@@ -4,7 +4,6 @@ require('@rushstack/eslint-patch/modern-module-resolution')
 module.exports = {
   root: true,
   extends: [
-    'vue-global-api',
     // 解决使用自动导入api报错
     './.eslintrc-auto-import.json',
     'plugin:vue/vue3-essential',

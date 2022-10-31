@@ -46,7 +46,6 @@ export default ({ mode }): UserConfigExport => {
           'pinia',
         ],
         // 自动生成'eslintrc-auto-import.json'文件，在'.eslintrc.cjs'的'extends'中引入解决报错
-        // 'vue-global-api'这个插件仅仅解决vue3 hook报错
         eslintrc: {
           enabled: true,
         },
