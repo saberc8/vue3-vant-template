@@ -7,7 +7,7 @@ const metaRouters: any = import.meta.glob('./modules/*.ts', { eager: true, impor
 // 处理路由
 export const routerArray: RouteRecordRaw[] = Object.keys(metaRouters).map((key) => metaRouters[key] || {})
 
-export const routes: RouteRecordRaw[] = [
+export const routes: RouteRecordRa  w[] = [
   {
     path: '/',
     redirect: HomePath,

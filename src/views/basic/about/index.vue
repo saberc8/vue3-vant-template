@@ -8,7 +8,7 @@
     <div>devDependencies</div>
     <Tag type="primary" v-for="(item, index) in devSchema" class="m-1">{{ item.label }}</Tag>
     <div>
-      {{test}}
+      {{ test }}
     </div>
   </div>
 </template>
