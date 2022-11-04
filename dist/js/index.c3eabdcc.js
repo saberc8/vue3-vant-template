@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper.5059d46b.js";import{y as c,x as o}from"./index.1dbffc6a.js";const t={},r={class:"app-page-category"};function a(s,n){return o(),c("div",r,"category")}const f=e(t,[["render",a]]);export{f as default};

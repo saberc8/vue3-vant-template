@@ -14,7 +14,6 @@ export function useLoading() {
   }
   const stopLoading = () => {
     console.log('stop')
-    toast.clear()
   }
 
   onBeforeUnmount(stopLoading)
