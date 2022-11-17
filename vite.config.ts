@@ -9,7 +9,11 @@ import { VantResolver } from 'unplugin-vue-components/resolvers'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import ViteImages from 'vite-plugin-vue-images'
 import UnoCSS from 'unocss/vite'
-
+import electron from 'vite-electron-plugin'
+import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin'
+import { rmSync } from 'fs'
+import renderer from 'vite-plugin-electron-renderer'
+rmSync('dist-electron', { recursive: true, force: true })
 // https://vitejs.dev/config/
 export default ({ mode }): UserConfigExport => {
   const root = process.cwd()
@@ -44,6 +48,32 @@ export default ({ mode }): UserConfigExport => {
         dirs: ['src/assets'], // 指明图片存放目录
       }),
       UnoCSS(),
+      electron({
+        include: ['electron'],
+        transformOptions: {
+          sourcemap: !!process.env.VSCODE_DEBUG,
+        },
+        plugins: [
+          ...(process.env.VSCODE_DEBUG
+            ? [
+              // Will start Electron via VSCode Debug
+              customStart(debounce(() => console.log(/* For `.vscode/.debug.script.mjs` */'[startup] Electron App'))),
+            ]
+            : []),
+            // Allow use `import.meta.env.VITE_SOME_KEY` in Electron-Main
+          loadViteEnv(),
+        ],
+      }),
+      // Use Node.js API in the Renderer-process
+      renderer({
+        nodeIntegration: true,
+        optimizeDeps: {
+          include: [
+            'fs/promises',
+            'process',
+          ],
+        },
+      }),
     ],
     resolve: {
       alias: {

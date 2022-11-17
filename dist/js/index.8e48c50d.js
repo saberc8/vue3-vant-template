@@ -1,0 +1,1 @@
+"use strict";const r=require("./index.e60f37de.js"),s={to:[String,Object],url:String,replace:Boolean};function c({to:e,url:t,replace:n,$router:o}){e&&o?o[n?"replace":"push"](e):t&&(n?location.replace(t):location.href=t)}function i(){const e=r.getCurrentInstance().proxy;return()=>c(e)}exports.routeProps=s;exports.useRoute=i;
