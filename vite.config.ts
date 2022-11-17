@@ -81,14 +81,14 @@ export default ({ mode }): UserConfigExport => {
       },
     },
     css: {
-      postcss: {
-        plugins: [
-          autoprefixer(),
-          pxtovw({
-            viewportWidth: 375,
-          }),
-        ],
-      },
+      // postcss: {
+      //   plugins: [
+      //     autoprefixer(),
+      //     pxtovw({
+      //       viewportWidth: 375,
+      //     }),
+      //   ],
+      // },
       preprocessorOptions: {
         scss: {
           additionalData: `@import "@/styles/_variables.scss";@import "@/styles/_mixins.scss";`,
@@ -121,4 +121,12 @@ export default ({ mode }): UserConfigExport => {
       },
     },
   })
+}
+
+function debounce<Fn extends (...args: any[]) => void>(fn: Fn, delay = 299) {
+  let t: NodeJS.Timeout
+  return ((...args) => {
+    clearTimeout(t)
+    t = setTimeout(() => fn(...args), delay)
+  }) as Fn
 }

@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("./_plugin-vue_export-helper.9e7bfbef.js"),e=require("./index.e60f37de.js"),r={},c={class:"app-page-category"};function n(s,i){return e.openBlock(),e.createElementBlock("div",c,"category")}const o=t._export_sfc(r,[["render",n]]);exports.default=o;
