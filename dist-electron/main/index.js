@@ -32,14 +32,23 @@ async function createWindow() {
   } else {
     win.loadFile(indexHtml);
   }
-  win.webContents.on("did-finish-load", () => {
-    win == null ? void 0 : win.webContents.send("main-process-message", new Date().toLocaleString());
-  });
   win.webContents.setWindowOpenHandler(({ url: url2 }) => {
     if (url2.startsWith("https:"))
       import_electron.shell.openExternal(url2);
     return { action: "deny" };
   });
+  let request = import_electron.net.request("https://gitee.com/junmoxiao1122/data/raw/master/demo/list.json");
+  request.on("response", (response) => {
+    console.log(JSON.stringify(response.statusCode));
+    console.log(JSON.stringify(response.headers));
+    response.on("data", (chunk) => {
+      console.log(chunk.toString(), 11111111);
+      win.webContents.on("did-finish-load", () => {
+        win == null ? void 0 : win.webContents.send("main-process", new Date().toLocaleString());
+      });
+    });
+  });
+  request.end();
 }
 import_electron.app.whenReady().then(createWindow);
 import_electron.app.on("window-all-closed", () => {

@@ -1,5 +1,6 @@
 <template>
   <div class="app-page-dashboard">
+  <button @click="sendEvent">111</button>
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap">
         <div class="w-full mb-4">
@@ -11,18 +12,11 @@
             <van-button class="inline" :upload="filterStr === '.metal'" @click="onFilter('.metal')">
               2
             </van-button>
-            <van-button
-              class="inline"
-              :upload="filterStr === '.transition'"
-              @click="onFilter('.transition')"
-            >
+            <van-button class="inline" :upload="filterStr === '.transition'" @click="onFilter('.transition')">
               3
             </van-button>
-            <van-button
-              class="inline"
-              :upload="filterStr === '.metal:not(.transition)'"
-              @click="onFilter('.metal:not(.transition)')"
-            >
+            <van-button class="inline" :upload="filterStr === '.metal:not(.transition)'"
+              @click="onFilter('.metal:not(.transition)')">
               4
             </van-button>
           </div>
@@ -30,11 +24,7 @@
         <div class="w-full mb-4">
           <h4 class="text-xl text-gray-300">Sorting</h4>
           <div class="flex">
-            <van-button
-              class="inline"
-              :upload="sorterStr === 'original-order'"
-              @click="onSorter('original-order')"
-            >
+            <van-button class="inline" :upload="sorterStr === 'original-order'" @click="onSorter('original-order')">
               5
             </van-button>
             <van-button class="inline" :upload="sorterStr === 'name'" @click="onSorter('name')">
@@ -46,11 +36,7 @@
             <van-button class="inline" :upload="sorterStr === 'number'" @click="onSorter('number')">
               8
             </van-button>
-            <van-button
-              class="inline"
-              :upload="sorterStr === 'category'"
-              @click="onSorter('category')"
-            >
+            <van-button class="inline" :upload="sorterStr === 'category'" @click="onSorter('category')">
               9
             </van-button>
           </div>
@@ -194,7 +180,7 @@
   </TransitionGroup>
   <div class="element">
     <div class="element-item" v-for="item in list" :style="{ backgroundColor: item.color }">{{
-      item.name
+        item.name
     }}</div>
   </div>
 </template>
@@ -203,6 +189,28 @@
 import { useLoading } from '@/hooks/useLoading'
 import { useName } from '@/hooks/useName'
 import Isotope from 'isotope-layout'
+import { lstat } from 'fs/promises'
+import { cwd } from 'process'
+import { ipcRenderer } from 'electron'
+
+
+setTimeout(() => {
+  ipcRenderer.on('main-process', (_event, ...args) => {
+    console.log('[Receive Main-process message]:', ...args)
+  })
+  console.log(ipcRenderer, '1')
+}, 1000);
+
+lstat(cwd()).then(stats => {
+  console.log('[fs.lstat]', stats)
+}).catch(err => {
+  console.error(err)
+})
+//did-finish-load
+const sendEvent = () => {
+  ipcRenderer.send('did-finish-load', 'Hello Main-process')
+}
+
 const { startLoading, stopLoading } = useLoading()
 const showSkeleton = ref(true)
 const { setName, name } = useName()
@@ -244,7 +252,7 @@ const shuffle = (arr: any[]) => {
   let i = arr.length
   while (i) {
     const j = Math.floor(Math.random() * i--)
-    ;[arr[j], arr[i]] = [arr[i], arr[j]]
+      ;[arr[j], arr[i]] = [arr[i], arr[j]]
   }
   return arr
 }
@@ -302,15 +310,18 @@ const to2DArray = (arr: any[], size: number) => {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
   .element-item {
     width: 40px;
     height: 40px;
     margin: 10px;
   }
 }
+
 .v-move {
   transition: all 0.8s ease;
 }
+
 .v-leave-active {
   position: absolute;
 }
@@ -326,31 +337,39 @@ const to2DArray = (arr: any[], size: number) => {
   font-weight: normal;
   padding: 10px;
 }
+
 .con-form {
   width: 100%;
 }
+
 .con-form .flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .con-form .flex a {
   font-size: 0.8rem;
   opacity: 0.7;
 }
+
 .con-form .flex a:hover {
   opacity: 1;
 }
+
 .con-form .vs-checkbox-label {
   font-size: 0.8rem;
 }
+
 .con-form .vs-input-content {
   margin: 10px 0px;
   width: calc(100%);
 }
+
 .con-form .vs-input-content .vs-input {
   width: 100%;
 }
+
 .footer-dialog {
   display: flex;
   align-items: center;
@@ -358,19 +377,23 @@ const to2DArray = (arr: any[], size: number) => {
   flex-direction: column;
   width: calc(100%);
 }
+
 .footer-dialog .new {
   margin: 0px;
   margin-top: 20px;
   padding: 0px;
   font-size: 0.7rem;
 }
+
 .footer-dialog .new a {
   color: rgba(var(--vs-primary), 1) !important;
   margin-left: 6px;
 }
+
 .footer-dialog .new a:hover {
   text-decoration: underline;
 }
+
 .footer-dialog .van-button {
   margin: 0px;
 }
@@ -393,7 +416,7 @@ const to2DArray = (arr: any[], size: number) => {
   color: #262524;
 }
 
-.element-item > * {
+.element-item>* {
   margin: 0;
   padding: 0;
 }
@@ -435,38 +458,47 @@ const to2DArray = (arr: any[], size: number) => {
   background: #f00;
   background: hsl(0, 100%, 50%);
 }
+
 .element-item.alkaline-earth {
   background: #f80;
   background: hsl(36, 100%, 50%);
 }
+
 .element-item.lanthanoid {
   background: #ff0;
   background: hsl(72, 100%, 50%);
 }
+
 .element-item.actinoid {
   background: #0f0;
   background: hsl(108, 100%, 50%);
 }
+
 .element-item.transition {
   background: #0f8;
   background: hsl(144, 100%, 50%);
 }
+
 .element-item.post-transition {
   background: #0ff;
   background: hsl(180, 100%, 50%);
 }
+
 .element-item.metalloid {
   background: #08f;
   background: hsl(216, 100%, 50%);
 }
+
 .element-item.diatomic {
   background: #00f;
   background: hsl(252, 100%, 50%);
 }
+
 .element-item.halogen {
   background: #f0f;
   background: hsl(288, 100%, 50%);
 }
+
 .element-item.noble-gas {
   background: #f08;
   background: hsl(324, 100%, 50%);

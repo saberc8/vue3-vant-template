@@ -12,7 +12,7 @@ process.env.DIST_ELECTRON = join(__dirname, '..')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
 process.env.PUBLIC = app.isPackaged ? process.env.DIST : join(process.env.DIST_ELECTRON, '../public')
 
-import { app, BrowserWindow, shell, ipcMain } from 'electron'
+import { app, BrowserWindow, shell, ipcMain, net } from 'electron'
 import { release } from 'os'
 import { join } from 'path'
 
@@ -61,15 +61,33 @@ async function createWindow() {
   }
 
   // Test actively push message to the Electron-Renderer
-  win.webContents.on('did-finish-load', () => {
-    win?.webContents.send('main-process-message', new Date().toLocaleString())
-  })
+
 
   // Make all links open with the browser, not with the application
   win.webContents.setWindowOpenHandler(({ url }) => {
     if (url.startsWith('https:')) shell.openExternal(url)
     return { action: 'deny' }
   })
+
+  // 请求网络服务net
+  let request = net.request("https://gitee.com/junmoxiao1122/data/raw/master/demo/list.json")
+  request.on("response", (response) => {
+    // 获取请求状态码
+    console.log(JSON.stringify(response.statusCode))
+    // 获取请求头
+    console.log(JSON.stringify(response.headers));
+
+    // 监听是否有数据
+    response.on("data", (chunk) => {
+      console.log(chunk.toString(), 11111111)
+      // 发送数据到渲染进程
+      win.webContents.on('did-finish-load', () => {
+        win?.webContents.send('main-process', new Date().toLocaleString())
+      })
+      
+    })
+  })
+  request.end();
 }
 
 app.whenReady().then(createWindow)
