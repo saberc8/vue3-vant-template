@@ -1,4 +1,4 @@
-import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
+import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse, AxiosHeaders } from 'axios'
 import { Toast } from 'vant'
 import { getToken } from '@/utils/auth'
 import NProgress from 'nprogress'
@@ -22,7 +22,8 @@ service.interceptors.request.use(
 
     const token = getToken()
     if (token) {
-      config.headers!.token = token
+      config.headers = { ...config.headers } as AxiosHeaders;
+      config.headers.set('token', token);
     }
     return config
   },
