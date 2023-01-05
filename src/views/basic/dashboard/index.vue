@@ -6,7 +6,6 @@
         <div class="demo-ol-body">
           <van-space size="1rem">
             <van-button type="primary" @click="onSubmit">开始</van-button>
-            <van-button type="primary" @click="stopLoading">停止</van-button>
           </van-space>
         </div>
       </li>
@@ -20,7 +19,7 @@
 <script lang="ts" setup>
 import { useLoading } from '@/hooks/useLoading'
 import { useName } from '@/hooks/useName'
-const { startLoading, stopLoading } = useLoading()
+const { startLoading } = useLoading()
 const showSkeleton = ref(true)
 const { setName, name } = useName()
 setTimeout(() => {
@@ -28,8 +27,5 @@ setTimeout(() => {
 }, 3000)
 const onSubmit = () => {
   startLoading()
-  setTimeout(() => {
-    stopLoading()
-  }, 3000)
 }
 </script>
