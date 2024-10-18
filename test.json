@@ -1,0 +1,58 @@
+[
+  {
+    "id": "XZT011",
+    "title": "1.刚刚忙完搬家的事，她感到十分疲（）。",
+    "type": "radio",
+    "score": 1,
+    "options": [
+      { "label": "A.倦", "value": "A" },
+      { "label": "B.偶", "value": "B" },
+      { "label": "C.傍", "value": "C" },
+      { "label": "D.侥", "value": "D" }
+    ]
+  },
+  {
+    "id": "XZT012",
+    "title": "2.他决定报名参加热门( )位的招聘。",
+    "type": "radio",
+    "options": [
+      { "label": "A.炭", "value": "A" },
+      { "label": "B.崔", "value": "B" },
+      { "label": "C.崩", "value": "C" },
+      { "label": "D.岗", "value": "D" }
+    ]
+  },
+  {
+    "id": "XZT013",
+    "title": "3.她心情不好，不理( )任何人。",
+    "type": "radio",
+    "options": [
+      { "label": "A.睬", "value": "A" },
+      { "label": "B.昧", "value": "B" },
+      { "label": "C.昵", "value": "C" },
+      { "label": "D.昭", "value": "D" }
+    ]
+  },
+  {
+    "id": "XZT014",
+    "title": "4. 新( )策一发布，大家就热烈地讨论起来。",
+    "type": "radio",
+    "options": [
+      { "label": "A.敞", "value": "A" },
+      { "label": "B.政", "value": "B" },
+      { "label": "C.敦", "value": "C" },
+      { "label": "D.敛", "value": "D" }
+    ]
+  },
+  {
+    "id": "XZT015",
+    "title": "5. 妈妈去超市买了好几( )酸奶。",
+    "type": "radio",
+    "options": [
+      { "label": "A.盗", "value": "A" },
+      { "label": "B.盟", "value": "B" },
+      { "label": "C.盔", "value": "C" },
+      { "label": "D.盒", "value": "D" }
+    ]
+  }
+]

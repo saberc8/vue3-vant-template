@@ -16,6 +16,7 @@ export default {
       meta: {
         title: '首页',
         icon: 'icon-dashboard',
+        keepAlive: true,
       },
     },
     {
@@ -28,12 +29,21 @@ export default {
       },
     },
     {
-      path: '/basic/about',
-      name: 'about',
-      component: () => import('@/views/basic/about/index.vue'),
+      path: '/basic/my',
+      name: 'my',
+      component: () => import('@/views/basic/my/index.vue'),
       meta: {
-        title: '关于',
+        title: '我的',
         icon: 'icon-dashboard',
+      },
+    },
+    {
+      path: '/basic/question-detail/:id',
+      name: 'question-detail',
+      component: () => import('@/views/basic/question-detail/index.vue'),
+      meta: {
+        title: '试卷',
+        requiresAuth: true,
       },
     },
   ],

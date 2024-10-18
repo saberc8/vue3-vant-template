@@ -1,10 +1,10 @@
 import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse, AxiosHeaders } from 'axios'
-import { Toast } from 'vant'
+import { showSuccessToast, showFailToast } from 'vant'
 import { getToken } from '@/utils/auth'
 import NProgress from 'nprogress'
 import { CodeMessage } from '@/config/constants'
 import type { CustomAxiosRequestConfig } from '@/types/global'
-
+import router from '@/router'
 export interface BaseResponse<T = any> {
   code: number
   data: T
@@ -22,45 +22,51 @@ service.interceptors.request.use(
 
     const token = getToken()
     if (token) {
-      config.headers = { ...config.headers } as AxiosHeaders;
-      config.headers.set('token', token);
+      config.headers = { ...config.headers } as AxiosHeaders
+      config.headers['Authorization'] = token
+      // 'X-Access-Token'
+      config.headers['X-Access-Token'] = token
     }
     return config
   },
   (error: { message: string }) => {
-    Toast.fail(error.message)
-  }
+    NProgress.done()
+    showFailToast(error.message)
+    return Promise.reject(error)
+  },
 )
 
 service.interceptors.response.use(
   async (response: AxiosResponse): Promise<any> => {
     const { data } = response
-    const { code, msg } = data
-
-    if (typeof code !== 'undefined' && code !== 0) {
-      Toast.fail(msg)
-      return Promise.reject(new Error(msg || 'Error'))
+    const { code, message } = data
+    if (typeof code !== 'undefined' && code !== 0 && code !== 200) {
+      showFailToast(message)
+      return Promise.reject(new Error(message || 'Error'))
     }
-
     NProgress.done()
-    return Promise.resolve(data)
+    return Promise.resolve(data.result)
   },
   (error: AxiosError) => {
     NProgress.done()
-    Toast.clear()
-
+    // code 401
+    if (error.response?.status === 401) {
+      showFailToast('登录过期，请重新登录')
+      router.push({ name: 'login' })
+      return Promise.reject(new Error('登录过期，请重新登录'))
+    }
     const response = Object.assign({}, error.response)
-    response && Toast.fail(CodeMessage[response.status] || '系统异常')
+    response && showFailToast(CodeMessage[response.status] || '系统异常')
 
     return Promise.reject(error)
-  }
+  },
 )
 
 const request = <T = any>(config: CustomAxiosRequestConfig): Promise<T> => {
   return new Promise((resolve, reject) => {
     service
       .request<BaseResponse<T>>(config)
-      .then((res: AxiosResponse) => resolve(res.data))
+      .then((res: AxiosResponse) => resolve(res))
       .catch((err: { message: string }) => reject(err))
   })
 }

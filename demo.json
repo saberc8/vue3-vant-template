@@ -1,0 +1,58 @@
+[
+  {
+    "id": "C1511",
+    "title": "1.1.进行网络教学的时候，必须突出网络的特点，挖（ ）网络的教学功能，充分发挥网络的交互功能和合作功能。",
+    "type": "radio",
+    "score": 1,
+    "options": [
+      { "label": "A.拉", "value": "A" },
+      { "label": "B.扫", "value": "B" },
+      { "label": "C.挑", "value": "C" },
+      { "label": "D.掘", "value": "D" }
+    ]
+  },
+  {
+    "id": "C1512",
+    "title": "2.谎言总有被（）穿的一天。",
+    "type": "radio",
+    "options": [
+      { "label": "A.拆", "value": "A" },
+      { "label": "B.折", "value": "B" },
+      { "label": "C.抵", "value": "C" },
+      { "label": "D.析", "value": "D" }
+    ]
+  },
+  {
+    "id": "C1513",
+    "title": "3.词的组合方式是顺着时间的线条前后相续，好像一根链条，一个环节（  ）着一个环节。",
+    "type": "radio",
+    "options": [
+      { "label": "A.搅", "value": "A" },
+      { "label": "B.扣", "value": "B" },
+      { "label": "C.抠", "value": "C" },
+      { "label": "D.抢", "value": "D" }
+    ]
+  },
+  {
+    "id": "C1514",
+    "title": "4. 美德是一种内涵，是一种人格的芬（），是自然的气质所散发出来的一种高贵的品味。",
+    "type": "radio",
+    "options": [
+      { "label": "A.芙", "value": "A" },
+      { "label": "B.茉", "value": "B" },
+      { "label": "C.芳", "value": "C" },
+      { "label": "D.葫", "value": "D" }
+    ]
+  },
+  {
+    "id": "C1515",
+    "title": "5. 她看向林先生的眼神中有着藏不住的爱（）之意。",
+    "type": "radio",
+    "options": [
+      { "label": "A.摹", "value": "A" },
+      { "label": "B.暮", "value": "B" },
+      { "label": "C.墓", "value": "C" },
+      { "label": "D.慕", "value": "D" }
+    ]
+  }
+]

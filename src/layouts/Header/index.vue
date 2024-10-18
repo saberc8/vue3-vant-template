@@ -1,9 +1,10 @@
 <template>
   <div class="app-header">
-    <van-nav-bar :title="(route.meta.title as string)" :left-arrow="route.name !== 'home'" @click-left="router.back()" @click-right="router.push('/login')">
-      <template #right>
-        <van-icon name="friends-o" />
-      </template>
+    <van-nav-bar
+      :title="route.meta.title as string"
+      :left-arrow="route.name !== 'home'"
+      @click-left="router.back()"
+    >
     </van-nav-bar>
   </div>
 </template>
